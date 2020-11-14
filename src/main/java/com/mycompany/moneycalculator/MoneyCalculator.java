@@ -14,13 +14,42 @@ import java.util.Scanner;
 public class MoneyCalculator {
 
     public static void main(String[] args) throws Exception{
-        
+        /**
+         * V1
         System.out.println("Introduzca una cantidad en dólares: ");
         Scanner scanner = new Scanner(System.in);
         double amount = Double.parseDouble(scanner.next());
         double exchangeRate = getExchangeRate("USD", "EUR");
         System.out.println(amount + "USD equivalen a " + amount*exchangeRate + " EUR");
         
+        * */
+        
+        MoneyCalculator moneyCalculator = new MoneyCalculator();
+        moneyCalculator.control();
+        
+    }
+    
+    private double amount;
+    private double exchangeRate;
+    
+    private void control() throws IOException {
+        input();
+        process();
+        output();
+    }
+    
+    private void input() {
+        System.out.println("Introduzca una cantidad en dólares: ");
+        Scanner scanner = new Scanner(System.in);
+        amount = Double.parseDouble(scanner.next());
+    }
+    
+    private void process() throws IOException {
+        exchangeRate = getExchangeRate("USD", "EUR");
+    }
+    
+    private void output() {
+        System.out.println(amount + " USD equivalen a " + amount*exchangeRate + " EUR");
     }
     
     private static double getExchangeRate(String from, String to) throws IOException {
