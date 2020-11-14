@@ -40,7 +40,7 @@ public class MoneyCalculator {
     }
     
     private void input() {
-        System.out.println("Introduzca una cantidad en dólares: ");
+        System.out.println("Introduzca una cantidad de dinero: ");
         Scanner scanner = new Scanner(System.in);
         
         amount = Double.parseDouble(scanner.next());
@@ -65,7 +65,7 @@ public class MoneyCalculator {
         URLConnection connection = url.openConnection();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line = reader.readLine();
-            String line1 = line.substring(line.indexOf(to)+12, line.indexOf("}"));
+            String line1 = line.substring(line.indexOf(":")+1, line.indexOf("}"));
             return Double.parseDouble(line1);
         }
     }
